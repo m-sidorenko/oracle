@@ -44,3 +44,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  telegram_bot:
+    build:
+      context: telegram_bot # Assuming you have a Dockerfile in the same directory as this file
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      llm_host: "http://llm"
+      llm_port: 8000
