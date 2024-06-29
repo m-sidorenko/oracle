@@ -71,6 +71,7 @@ WORKDIR /app
 # `production` image used for runtime
 FROM python-base as production
 ENV STAGE_ENV=development
+RUN apt-get update && apt-get install --no-install-recommends -y curl
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 WORKDIR /app
 COPY . .
@@ -78,5 +79,4 @@ COPY . .
 ENV HOST 0.0.0.0
 ENV PORT 8000
 ENTRYPOINT ["sh", "-c"]
-CMD ["uvicorn src.main:app"]
-#CMD ["uvicorn src.main:app", "--host", "$HOST", "--port", "$PORT"]
+CMD ["uvicorn src.main:app --host $HOST --port $PORT"]

@@ -3,7 +3,6 @@ import logging
 
 from starlette.middleware.cors import CORSMiddleware
 
-
 app = FastAPI(
     title="LLM API",
     description="",
@@ -26,10 +25,13 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
+
 @app.get("/health/")
 async def health():
     return {"status": "ok"}
 
+
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="localhost", port=8000)
