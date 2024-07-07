@@ -22,9 +22,9 @@ from telegram.ext import (
     filters,
     CallbackContext,
 )
-
+from dotenv import load_dotenv
 # Load environment variables
-from load_envs import *  # TODO: to pydantic config
+load_dotenv() # TODO: to pydantic config
 
 # TODO: better logging system
 logging.basicConfig(
