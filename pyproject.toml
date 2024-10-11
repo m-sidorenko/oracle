@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mini-app-demo"
+version = "0.1.0"
+description = ""
+authors = ["Mikhail <mi.sidoren@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytelegrambotapi = "^4.23.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
