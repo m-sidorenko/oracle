@@ -1,0 +1,29 @@
+.header {
+	display: flex;
+	margin: 0.6em;
+
+	font-family: 'Lora';
+	color: rgb(40, 5, 41);
+	font-weight: 200;
+	font-size: 30px; /*должно меняться в зависимости от размера экрана тогда*/
+	justify-content: center;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 10px;
+	padding: 20px;
+}
+
+.card {
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	height: 25vh;
+	/* Фиксированная высота карточек */
+}
