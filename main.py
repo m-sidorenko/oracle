@@ -8,7 +8,7 @@ bot = telebot.TeleBot('INSERT KEY HERE')
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     # Создаем Web App кнопку
-    web_app_url = "http://192.168.0.211:3000"  # Вставь сюда URL своего мини-приложения
+    web_app_url = "https://google.com"  # Вставь сюда URL своего мини-приложения
     web_app = types.WebAppInfo(url=web_app_url)
 
     markup = types.InlineKeyboardMarkup()
