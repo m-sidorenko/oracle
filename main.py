@@ -1,14 +1,16 @@
 import telebot
 from telebot import types
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-bot = telebot.TeleBot('INSERT KEY HERE')
 
+bot = telebot.TeleBot(f"{os.getenv('BOT_TOKEN')}")
 
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    # Создаем Web App кнопку
-    web_app_url = "https://google.com"  # Вставь сюда URL своего мини-приложения
+    web_app_url = os.getenv('NGROK_SERV_LINK')
     web_app = types.WebAppInfo(url=web_app_url)
 
     markup = types.InlineKeyboardMarkup()
@@ -18,5 +20,4 @@ def send_welcome(message):
     bot.send_message(message.chat.id, "Нажми кнопку для открытия миниапп:", reply_markup=markup)
 
 
-# Запуск бота
 bot.polling()
