@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+#  frontend:
+#    build:
+#      context: telegram_web_app # Assuming you have a Dockerfile in the same directory as this file
+#      dockerfile: Dockerfile
+#    restart: always
+#    depends_on:
+#      - llm
+#    ports:
+#      - "8500:8500"
+#    expose:
+#      - "8500"
+#    environment:
+#      host: "0.0.0.0"
+#      port: 8500
+#      backend_host: "http://llm"
+#      backend_port: 8000
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:8500"]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 5
+
+  llm:
+    build:
+      context: llm # Assuming you have a Dockerfile in the same directory as this file
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    environment:
+      host: "0.0.0.0"
+      port: 8000
+#      LANGCHAIN_TRACING_V2: true
+#      LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY}
+#      LLM_API_KEY: ${LLM_API_KEY}
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  telegram_bot:
+    build:
+      context: telegram_bot # Assuming you have a Dockerfile in the same directory as this file
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      llm_host: "http://llm"
+      llm_port: 8000

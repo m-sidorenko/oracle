@@ -1,0 +1,58 @@
+/* Стили по умолчанию для небольших устройств (до 320px) */
+* {
+	font-family: 'Comfortaa', sans-serif;
+	max-width: 414px;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	background: linear-gradient(0deg, rgb(255, 183, 195) 0%, rgb(200, 158, 177) 48%, rgb(202, 73, 211) 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+/* 320px - небольшие экраны, вроде iPhone SE */
+@media (min-width: 320px) {
+	.container {
+		width: 90%;
+		height: auto;
+	}
+
+	.btn_click {
+		width: 100%;
+		height: 50px;
+	}
+
+}
+
+/* 375px - более крупные экраны (iPhone X, iPhone 12) */
+@media (min-width: 375px) {
+	.container {
+		width: 95%;
+		height: auto;
+	}
+
+	.btn_click {
+		width: 100%;
+		height: 55px;
+	}
+
+	.main_img {
+		width: 120px;
+	}
+}
+
+/* 414px - крупные устройства (iPhone 11 Pro Max, iPhone 12 Pro Max) */
+@media (min-width: 414px) {
+
+	.btn_click {
+		width: 100%;
+		height: 60px;
+	}
+
+	.main_img {
+		width: 140px;
+	}
+}
