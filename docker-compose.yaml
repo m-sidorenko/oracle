@@ -11,7 +11,46 @@ services:
       - "3000:3000"
     networks:
       - app_network
+    volumes:
+      - shared_env:/shared_env  # Монтируем общий volume
+
+  ngrok:
+    build:
+      context: ./ngrok
+      dockerfile: Dockerfile
+    container_name: ngrok
+    command: ["bash", "/app/start_ngrok.sh"]
+    user: root  # Запускаем от имени root, чтобы решить проблему с правами
+    networks:
+      - app_network
+    environment:
+      NGROK_AUTHTOKEN: 2nKbahaD2vqs1Je4ScXsqYbVtBz_5gyYcZtSMCc4AmXq7n4WA
+    volumes:
+      - shared_env:/shared_env  # Монтируем общий volume для передачи данных
+    depends_on:
+      - frontend
+    restart: always
+
+
+  telegram_bot:
+    build:
+      context: ./backend/telegram_bot
+      dockerfile: Dockerfile
+    image: telegram_bot_backend
+    container_name: telegram_bot_backend
+    environment:
+      - ENV_FILE=.env
+    volumes:
+      - shared_env:/shared_env  # Монтируем общий volume
+    networks:
+      - app_network
+    depends_on:
+      - ngrok
+    command: ["bash", "/app/entrypoint.sh"] # Читаем переменные из файла
 
 networks:
   app_network:
     driver: bridge
+
+volumes:
+  shared_env:

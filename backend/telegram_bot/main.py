@@ -10,7 +10,7 @@ bot = telebot.TeleBot(f"{os.getenv('BOT_TOKEN')}")
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    web_app_url = os.getenv('NGROK_SERV_LINK')
+    web_app_url = os.getenv('NGROK_URL')
     web_app = types.WebAppInfo(url=web_app_url)
 
     markup = types.InlineKeyboardMarkup()

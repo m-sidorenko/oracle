@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "telegram-bot"
+name = "mini-app-demo"
 version = "0.1.0"
-description = "Handler for Telegram Bot on Python"
-authors = ["Gusmanov Maksim <anysome17@gmail.com>, Mikhail Sidorenko <https://github.com/m-sidorenko>"]
-license = "\\"
+description = ""
+authors = ["Mikhail <mi.sidoren@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-SQLAlchemy = "^2.0.35"
+python = "^3.11"
+pytelegrambotapi = "^4.23.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]
